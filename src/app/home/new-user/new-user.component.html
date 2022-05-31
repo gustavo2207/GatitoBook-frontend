@@ -1,0 +1,72 @@
+<h4 class="text-center mb-3">
+  Register youself and show your pet for the world!
+</h4>
+
+<form action="" class="form" [formGroup]="newUserForm" (ngSubmit)="register()">
+  <div class="form-group mb-4">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="email"
+      formControlName="email"
+    />
+    <app-messages
+      *ngIf="
+        newUserForm.get('email')?.errors?.['required'] &&
+        newUserForm.get('email')?.touched
+      "
+      message="Mandatory Email!"
+    ></app-messages>
+    <app-messages
+      *ngIf="newUserForm.get('email')?.errors?.['email'] && newUserForm.get('email')?.touched"
+      message="email out formmating"
+    ></app-messages>
+  </div>
+  <div class="form-group mb-4">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="name"
+      formControlName="fullName"
+    />
+    <app-messages
+      *ngIf="
+        newUserForm.get('fullName')?.errors &&
+        newUserForm.get('fullName')?.touched
+      "
+      message="wrong name"
+    ></app-messages>
+  </div>
+  <div class="form-group mb-4">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="user"
+      formControlName="userName"
+    />
+    <app-messages
+      *ngIf="newUserForm.get('userName')?.errors?.['lowercase'] && newUserForm.get('userName')?.touched"
+      message="the user name must to be lowercase"
+    ></app-messages>
+    <app-messages
+      message="User already exists"
+      *ngIf="newUserForm.get('userName')?.errors?.['userExist']"
+    ></app-messages>
+  </div>
+  <div class="form-group mb-4">
+    <input
+      type="password"
+      placeholder="Senha"
+      class="form-control"
+      formControlName="password"
+    />
+    <app-messages
+      *ngIf="newUserForm.errors?.['passwordUserNameSameValidator']"
+      mensagem="Senha deve ser diferente do usuário"
+    >
+    </app-messages>
+  </div>
+  <button class="btn btn-primary btn-block">Register</button>
+</form>
+
+<p>Already a user?<a routerLink="">Login</a></p>
