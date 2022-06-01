@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
+import { AutenticacaoModule } from './autenticacao/autenticacao.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { FooterModule } from './components/footer/footer.module';
     HttpClientModule,
     HeaderModule,
     FooterModule,
+    AutenticacaoModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

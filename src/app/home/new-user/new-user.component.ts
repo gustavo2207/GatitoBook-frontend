@@ -29,6 +29,7 @@ export class NewUserComponent implements OnInit {
         fullName: ['', [Validators.required, Validators.minLength(4)]],
         userName: [
           '',
+          Validators.required,
           [lowercaseValidator],
           [this.existUserService.alreadyExistUser()],
         ],

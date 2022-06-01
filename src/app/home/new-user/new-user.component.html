@@ -61,7 +61,7 @@
       formControlName="password"
     />
     <app-messages
-      *ngIf="newUserForm.errors?.['passwordUserNameSameValidator']"
+      *ngIf="!!newUserForm.errors?.['passwordUserNameSameValidator']"
       mensagem="Senha deve ser diferente do usuário"
     >
     </app-messages>

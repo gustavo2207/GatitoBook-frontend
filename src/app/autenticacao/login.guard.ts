@@ -18,7 +18,7 @@ export class LoginGuard implements CanLoad {
     | boolean
     | UrlTree {
     if (this.userService.isLogged()) {
-      this.router.navigateByUrl('animais');
+      this.router.navigateByUrl('/animais');
       return false;
     }
     return true;
