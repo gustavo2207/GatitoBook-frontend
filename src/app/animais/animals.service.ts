@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, mapTo, Observable, of, throwError } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Animal, Animals } from './animal';
 
@@ -36,5 +36,17 @@ export class AnimalsService {
             : throwError(() => new Error());
         })
       );
+  }
+
+  upload(description: string, allowComment: boolean, file: File) {
+    const formData: FormData = new FormData();
+    formData.append('description', description);
+    formData.append('allowComments', allowComment ? 'true' : 'false');
+    formData.append('imageFile', file);
+
+    return this.httpClient.post(`${API}/photos/upload`, formData, {
+      observe: 'events',
+      reportProgress: true,
+    });
   }
 }
